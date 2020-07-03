@@ -49,6 +49,11 @@ export default class KegControl extends Component {
     this.setState({ detail: true });
   }
 
+  back = () =>{
+    console.log(newItem);
+    this.setState({ detail: true });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
