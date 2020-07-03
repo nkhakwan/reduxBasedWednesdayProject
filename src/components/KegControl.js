@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewKeg from './NewKeg'
 import KegList from './KegList'
+import Details from './Details'
 
 export default class KegControl extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class KegControl extends Component {
       formVisibleOnPage: false,
       masterKegList: [],
       detail: false,
-      detailId: null
+      detailItem: {}
     };
   }
 
@@ -46,23 +47,24 @@ export default class KegControl extends Component {
     const newItem = this.state.masterKegList.filter(keg => keg.id === id)
     console.log(id);
     console.log(newItem);
-    this.setState({ detail: true });
+    this.setState({ detail: true, detailItem : newItem });
   }
 
   back = () =>{
-    console.log(newItem);
-    this.setState({ detail: true });
+    console.log("we are in the back");
+    this.setState({ detail: false, detailItem : {} });
   }
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
+    if (this.state.detail){
+      currentlyVisibleState = <Details detailItem={this.state.detailItem} back={this.back} />;
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKeg onNewKegCreation={this.onNewKegCreation} />
       buttonText = "cancel"; 
     } else if (!this.state.formVisibleOnPage) {
       currentlyVisibleState = <KegList kegList={this.state.masterKegList} buy={this.buy} detail={this.detail} />;
-      
       buttonText = "Add Keg";
     }
     return (
