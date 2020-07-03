@@ -42,7 +42,12 @@ export default class KegControl extends Component {
     })
   }
 
-
+  detail = (id) => {
+    const newItem = this.state.masterKegList.filter(keg => keg.id === id)
+    console.log(id);
+    console.log(newItem);
+    this.setState({ detail: true });
+  }
 
   render() {
     let currentlyVisibleState = null;
@@ -51,7 +56,8 @@ export default class KegControl extends Component {
       currentlyVisibleState = <NewKeg onNewKegCreation={this.onNewKegCreation} />
       buttonText = "cancel"; 
     } else if (!this.state.formVisibleOnPage) {
-      currentlyVisibleState = <KegList kegList={this.state.masterKegList} buy={this.buy} stock={this.stock} />;
+      currentlyVisibleState = <KegList kegList={this.state.masterKegList} buy={this.buy} detail={this.detail} />;
+      
       buttonText = "Add Keg";
     }
     return (

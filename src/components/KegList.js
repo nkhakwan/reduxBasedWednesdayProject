@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default function KegList(props) {
-  const { kegList, buy, stock } = props
+  const { kegList, buy, detail } = props
   return (
     <>
-      <h1>Kegs! </h1>
+      <h1>Drinks! Brands, Prices and Alcohol Contents </h1>
       <div className="keg-container">
         {kegList.length > 0 ? kegList.map(keg => (
           <div className="keg-box" key={keg.id}>
@@ -12,12 +12,13 @@ export default function KegList(props) {
             <div>
               <h3>{keg.name}</h3> 
               <p className="brand"><strong>Brand:</strong><br /> {keg.brand}</p>
-              <h4> <strong>Cost of Pint:</strong> ${keg.price}</h4>
-              <h5><strong>Stock:</strong> {keg.quantity > 0 ? keg.quantity : <strong>Out of stock</strong>}</h5>
+              <h4> <strong>Pint Price:</strong> ${keg.price}</h4>
+              <h5><strong>Pints Available:</strong> {keg.quantity > 0 ? keg.quantity : <strong>Out of stock</strong>}</h5>
               <h5><strong>Alcohol Contents:</strong> {keg.content}</h5>
             </div>
             <div className="buttons">
               {keg.quantity > 0 ? <button className="buy" onClick={() => buy(keg.id)}>buy</button> : <button className="buy" onClick={() => buy(keg.id)} disabled>buy</button>}
+              {keg.quantity > 0 ? <button className="buy" onClick={() => detail(keg.id)}>Product Details</button> : <button className="buy" onClick={() => detail(keg.id)} disabled>detail</button>}
             </div>
           </div>
         )
