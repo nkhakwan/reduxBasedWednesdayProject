@@ -4,7 +4,7 @@ export default function Details(props){
   const { detailItem, back} = props
   return (
     <>
-      <h1> Details</h1>
+      <h1> Details of {detailItem.name}</h1>
       <div className="keg-container">
         
           <div className="keg-box" key={detailItem.id}>

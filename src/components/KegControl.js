@@ -59,7 +59,8 @@ export default class KegControl extends Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.detail){
-      currentlyVisibleState = <Details detailItem={this.state.detailItem} back={this.back} />;
+      console.log(`detailItem value is here ${this.state.detailItem}`);
+      currentlyVisibleState = <Details detailItem={this.state.detailItem} back={this.back } />;
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKeg onNewKegCreation={this.onNewKegCreation} />
       buttonText = "cancel"; 
