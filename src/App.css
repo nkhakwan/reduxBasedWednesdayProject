@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -23,6 +24,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+body{
+  background-color: rgba(220, 236, 241, 0.952);
+}
 
 .App-link {
   color: #61dafb;
@@ -36,3 +40,161 @@
     transform: rotate(360deg);
   }
 }
+.keg-box{
+  width: 30vw;
+  border: solid gray 1px;
+  border-radius: 5px;
+  background: lavender;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  box-shadow: 5px 10px 8px rgba(73, 73, 73, 0.7);
+}
+
+.keg-box img{
+  max-width: 80%;
+}
+.keg-box div{
+  width: 80%;
+  text-align: left;
+  padding: .5rem;
+}
+
+.keg-container{
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-between;
+}
+button{
+ padding: .5rem;
+ border-radius: 5px;
+ margin: 1rem;
+ font-weight: 700;
+}
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+}
+.add{
+  background-color: none;
+  border: solid 2px green;
+  color: green;
+  transition: all .5s linear;
+
+}
+.add:hover{
+ background-color: green;
+ color: white
+}
+.delete{
+  background-color: none;
+  border: solid 2px red;
+  color: red;
+  transition: all .5s linear;
+
+}
+.delete:hover{
+ background-color: red;
+ color: white
+}
+
+.buy{
+  background-color: none;
+  border: solid 2px rgb(62, 117, 218);
+  color: rgb(62, 117, 218);
+  transition: all .5s linear;
+
+}
+.buy:hover{
+ background-color: rgb(62, 117, 218);
+ color: white
+}
+.edit{
+  background-color: none;
+  border: solid 2px goldenrod;
+  color: goldenrod;
+  transition: all .5s linear;
+
+}
+.edit:hover{
+ background-color: goldenrod;
+ color: white
+}
+
+.keg-form{
+  width: 50vw;
+  border: solid gray 1px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: cadetblue;
+
+}
+
+.keg-form input, select,textarea{
+  width: 80%;
+  margin: 1rem;
+
+}
+.brand{
+  overflow: auto;
+ max-height: 20vh;
+}
+
+.form-container{
+  margin: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+button:disabled:hover,
+button[disabled]:hover{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
