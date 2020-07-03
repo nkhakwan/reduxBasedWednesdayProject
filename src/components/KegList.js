@@ -17,7 +17,7 @@ export default function KegList(props) {
             </div>
             <div className="buttons">
               {keg.quantity > 0 ? <button className="buy" onClick={() => buy(keg.id)}>buy</button> : <button className="buy" onClick={() => buy(keg.id)} disabled>buy</button>}
-              <button className="add" onClick={() => stock(keg.id)}>Add Stock</button>
+              
               
               
             </div>
@@ -30,3 +30,4 @@ export default function KegList(props) {
   )
 }
 //<button className="detail" onClick={() => handleDetail(keg.id)}>Detail</button>
+// <button className="add" onClick={() => stock(keg.id)}>Add Stock</button>

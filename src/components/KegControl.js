@@ -29,7 +29,18 @@ export default class KegControl extends Component {
   }
 
   
-
+  buy = (id) => {
+    this.setState(state => {
+      const masterKegList = state.masterKegList.map(element => {
+        if (element.id === id && element.quantity > 0) {
+          return { ...element, quantity: element.quantity - 1 }
+        } else {
+          return element
+        }
+      });
+      return { masterKegList }
+    })
+  }
 
 
 
