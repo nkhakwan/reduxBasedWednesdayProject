@@ -8,12 +8,12 @@
 
 _This React Project allows the users to add Kegs of drinks that are than shown in pints. Different products can be added with information on name, Brand, price per pint, alcohol contents. User can buy the product per pint and it'll reduce the quantity by pints. User can view the details on any product on a separate screen_
 
-# Tree structure
-## Index.js
-##   App.js
-##      KegControl
-##          KegList
-##          NewKeg
+### Tree structure
+
+[componentTree](./taproom.jpg)
+
+
+
 
 ## Setup/Installation Requirements
 
