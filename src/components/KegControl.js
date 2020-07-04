@@ -10,9 +10,12 @@ export default class KegControl extends Component {
       formVisibleOnPage: false,
       masterKegList: [],
       detail: false,
-      detailItem: {}
+      detailItem: []
     };
+    this.handleClick = this.handleClick.bind(this); 
   }
+  
+
 
   handleClick = () => {
     this.setState(lastState => ({
@@ -45,14 +48,11 @@ export default class KegControl extends Component {
 
   detail = (id) => {
     const newItem = this.state.masterKegList.filter(keg => keg.id === id)
-    console.log(id);
-    console.log(newItem);
-    this.setState({ detail: true, detailItem : newItem });
+    this.setState({ detail : true, detailItem : newItem });
   }
 
   back = () =>{
-    console.log("we are in the back");
-    this.setState({ detail: false, detailItem : {} });
+    this.setState({ detail : false });
   }
 
   render() {
@@ -60,7 +60,7 @@ export default class KegControl extends Component {
     let buttonText = null;
     if (this.state.detail){
       console.log(`detailItem value is here ${this.state.detailItem}`);
-      currentlyVisibleState = <Details detailItem={this.state.detailItem} back={this.back } />;
+      currentlyVisibleState = <Details detailItem={this.state.detailItem[0]} back={this.back } />;
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKeg onNewKegCreation={this.onNewKegCreation} />
       buttonText = "cancel"; 
