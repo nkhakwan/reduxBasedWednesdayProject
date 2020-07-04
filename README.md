@@ -22,7 +22,7 @@ _This React Project allows the users to add Kegs of drinks that are than shown i
 3. Than execute "npm run start". There on display would guide you thru interface.
 
 ## Precaution 
-#### To fill up the form of adding Kegs, it requires a URL for the picture of the Drinking Product. For Teacher's ready reference I am placing four picture addresses of various cities in Turkey to fill the form. You'll not see the product of a drink but each drink you add would be represented by a city of Turkey
+#### To fill up the form of adding Kegs, it requires a URL for the picture of the Drinking Product. For Teacher's ready reference I am placing four picture addresses of various cities in Turkey to fill the form. You'll not see the picture of a drink with each product but each drink you add with the underneath URL's would be represented by a city of Turkey
 
 https://www.ebrdgreencities.com/assets/Uploads/180881cd07/IZMIR.png
 https://www.ephesus.us/upload/1553941149_IMG_7440.jpg
