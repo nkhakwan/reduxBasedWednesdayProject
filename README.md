@@ -1,6 +1,6 @@
 # _TapRoom_
 
-#### _Epicodus React Week P2roject_
+#### _Epicodus React Week 2 Project_
 
 #### By _**Khan Sahab**_
 
