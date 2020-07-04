@@ -61,12 +61,13 @@ export default class KegControl extends Component {
     if (this.state.detail){
       console.log(`detailItem value is here ${this.state.detailItem}`);
       currentlyVisibleState = <Details detailItem={this.state.detailItem[0]} back={this.back } />;
+      buttonText = "Not to be clicked"
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKeg onNewKegCreation={this.onNewKegCreation} />
       buttonText = "cancel"; 
     } else if (!this.state.formVisibleOnPage) {
       currentlyVisibleState = <KegList kegList={this.state.masterKegList} buy={this.buy} detail={this.detail} />;
-      buttonText = "Add Keg";
+      buttonText = "Add Kegs";
     }
     return (
       <React.Fragment>

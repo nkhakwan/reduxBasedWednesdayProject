@@ -14,7 +14,7 @@ export default function NewKeg(props) {
         img: event.target.img.value,
         price: event.target.price.value,
         content: event.target.content.value,
-        quantity: event.target.quantity.value,
+        quantity: (event.target.quantity.value*120),
         id: v4()
       });
   }
@@ -30,8 +30,8 @@ export default function NewKeg(props) {
         <input type="text" name="brand" placeholder="Product Brand" />
         <input type="number" name="price" placeholder="Product Price" />
         <input type="number" name="content" placeholder="Alcohol Perentage" />
-        <input type="number" name="quantity" placeholder="Pint Quantity" />
-        <button className="add" type="submit">Add Keg</button>
+        <input type="number" name="quantity" placeholder="Quantity in Kegs" />
+        <button className="add" type="submit">Add Kegs</button>
       </form>
     </div>
   )
