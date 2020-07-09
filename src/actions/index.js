@@ -1,18 +1,6 @@
-export const addTicket = (ticket) => {
-  const { names, location, issue, id } = ticket;
-  return {
-    type: 'ADD_TICKET',
-    names: names,
-    location: location,
-    issue: issue,
-    id: id
-  }
-}
-
-
 export const actionFormTgl =()=> ({
   type: 'FORM_TGL'
-})
+});
 
 export const actionAdd = (newKeg)=> {
     const { id, name, brand, img, price, content, quantity } = newKeg;
@@ -25,5 +13,23 @@ export const actionAdd = (newKeg)=> {
       price : price,
       content: content,
       quantity: quantity
+    }
+  }
+
+  export const actionFormFalse = () =>({
+    type: 'FORM_FALSE'
+  });
+
+  export const actionDecQty = (id) => {
+    return{
+      type: 'DEC_QTY',
+      id : id
+    }
+  }
+
+  export const actionDetail = (id) => {
+    return {
+      type: 'DETAIL',
+      id : id
     }
   }

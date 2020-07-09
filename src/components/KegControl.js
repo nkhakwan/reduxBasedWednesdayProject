@@ -27,7 +27,8 @@ export default class KegControl extends Component {
 
   handleClick = () => {
   const { dispatch } = this.props;
-  dispatch(a.actionFormTgl);
+  const action = a.actionFormTgl();
+  dispatch(action);
 }
   /*onNewKegCreation = (newKeg) => {
     const newMasterKegList = this.state.masterKegList.concat(newKeg);
@@ -41,40 +42,17 @@ export default class KegControl extends Component {
 
   onNewKegCreation = (newKeg) => {
     const {dispatch} =this.props;
-    const { id, name, brand, img, price, content, quantity } = newKeg;
-    const actionAdd = {
-      type: 'ADD_KEG',
-      id : id,
-      name : name,
-      brand : brand,
-      img : img,
-      price : price,
-      content: content,
-      quantity: quantity
-    }
-    dispatch(a.actionAdd);
-
-    const actionFormFalse = {
-      type: 'FORM_FALSE'
-    }
-    dispatch(actionFormFalse);
+    const action1 = a.actionAdd(newKeg);
+    dispatch(action1);
+    const action2 = a.actionFormFalse();
+    dispatch(action2);
   }
   
-
-
-
-
-
   
   buy = (id) => {
-
     const {dispatch} =this.props;
-    const { id } = id;
-    const actionDecQty = {
-      type: 'DEC_QTY',
-      id : id
-    }
-    dispatch(a.actionDecQty);
+    const action = a.actionDecQty(id);
+    dispatch(action);
   }
 
   /*buy = (id) => {
@@ -92,12 +70,8 @@ export default class KegControl extends Component {
 
   detail = (id) => {
     const {dispatch} =this.props;
-    const { id } = id;
-    const actionDetail = {
-      type: 'DETAIL',
-      id : id
-    }
-    dispatch(a.actionDetail);
+    action = a.actionDetail(id);
+    dispatch(action);
     this.setState({ detail : true });
   }
 
