@@ -2,28 +2,33 @@ import React, { Component } from 'react'
 import NewKeg from './NewKeg'
 import KegList from './KegList'
 import Details from './Details'
+import * as a from './../actions';
 
 export default class KegControl extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false,
+      //formVisibleOnPage: false,
       //masterKegList: [],
       detail: false,
-      detailItem: []
+     // detailItem: []
     };
     this.handleClick = this.handleClick.bind(this); 
   }
   
+  
+  
 
-
-  handleClick = () => {
+  /*handleClick = () => {
     this.setState(lastState => ({
       formVisibleOnPage: !lastState.formVisibleOnPage
     }));
-  }
+  }*/
 
-
+  handleClick = () => {
+  const { dispatch } = this.props;
+  dispatch(a.actionFormTgl);
+}
   /*onNewKegCreation = (newKeg) => {
     const newMasterKegList = this.state.masterKegList.concat(newKeg);
     this.setState({
@@ -47,10 +52,10 @@ export default class KegControl extends Component {
       content: content,
       quantity: quantity
     }
-    dispatch(actionAdd);
+    dispatch(a.actionAdd);
 
     const actionFormFalse = {
-      type: 'FormFalse'
+      type: 'FORM_FALSE'
     }
     dispatch(actionFormFalse);
   }
@@ -62,19 +67,17 @@ export default class KegControl extends Component {
 
   
   buy = (id) => {
-    this.setState(state => {
-      const masterKegList = state.masterKegList.map(element => {
-        if (element.id === id && element.quantity > 0) {
-          return { ...element, quantity: element.quantity - 1 }
-        } else {
-          return element
-        }
-      });
-      return { masterKegList }
-    })
+
+    const {dispatch} =this.props;
+    const { id } = id;
+    const actionDecQty = {
+      type: 'DEC_QTY',
+      id : id
+    }
+    dispatch(a.actionDecQty);
   }
 
-  buy = (id) => {
+  /*buy = (id) => {
     this.setState(state => {
       const masterKegList = state.masterKegList.map(element => {
         if (element.id === id && element.quantity > 0) {
@@ -85,12 +88,23 @@ export default class KegControl extends Component {
       });
       return { masterKegList }
     })
-  }
+  }*/
 
   detail = (id) => {
+    const {dispatch} =this.props;
+    const { id } = id;
+    const actionDetail = {
+      type: 'DETAIL',
+      id : id
+    }
+    dispatch(a.actionDetail);
+    this.setState({ detail : true });
+  }
+
+  /*detail = (id) => {
     const newItem = this.state.masterKegList.filter(keg => keg.id === id)
     this.setState({ detail : true, detailItem : newItem });
-  }
+  }*/
 
   back = () =>{
     this.setState({ detail : false });
@@ -110,6 +124,7 @@ export default class KegControl extends Component {
       currentlyVisibleState = <KegList kegList={this.state.masterKegList} buy={this.buy} detail={this.detail} />;
       buttonText = "Add Kegs";
     }
+  
     return (
       <React.Fragment>
         {currentlyVisibleState}
@@ -119,6 +134,7 @@ export default class KegControl extends Component {
   }
 }
 
+  
 
 KegControl.propTypes = {
   masterKegList: PropTypes.object,
@@ -128,7 +144,8 @@ KegControl.propTypes = {
 const mapStateToProps = state => {
   return {
     masterKegList: state.masterKegList,
-    formVisibleOnPage: state.formVisibleOnPage
+    formVisibleOnPage: state.formVisibleOnPage,
+    detailItem : state.detailItem
   }
 }
 
