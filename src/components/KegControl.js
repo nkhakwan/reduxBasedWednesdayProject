@@ -8,7 +8,7 @@ export default class KegControl extends Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterKegList: [],
+      //masterKegList: [],
       detail: false,
       detailItem: []
     };
@@ -24,15 +24,56 @@ export default class KegControl extends Component {
   }
 
 
-  onNewKegCreation = (newKeg) => {
+  /*onNewKegCreation = (newKeg) => {
     const newMasterKegList = this.state.masterKegList.concat(newKeg);
     this.setState({
       masterKegList: newMasterKegList,
       formVisibleOnPage: false
     });
-  }
+  }*/
 
   
+
+  onNewKegCreation = (newKeg) => {
+    const {dispatch} =this.props;
+    const { id, name, brand, img, price, content, quantity } = newKeg;
+    const actionAdd = {
+      type: 'ADD_KEG',
+      id : id,
+      name : name,
+      brand : brand,
+      img : img,
+      price : price,
+      content: content,
+      quantity: quantity
+    }
+    dispatch(actionAdd);
+
+    const actionFormFalse = {
+      type: 'FormFalse'
+    }
+    dispatch(actionFormFalse);
+  }
+  
+
+
+
+
+
+  
+  buy = (id) => {
+    this.setState(state => {
+      const masterKegList = state.masterKegList.map(element => {
+        if (element.id === id && element.quantity > 0) {
+          return { ...element, quantity: element.quantity - 1 }
+        } else {
+          return element
+        }
+      });
+      return { masterKegList }
+    })
+  }
+
   buy = (id) => {
     this.setState(state => {
       const masterKegList = state.masterKegList.map(element => {
@@ -77,5 +118,25 @@ export default class KegControl extends Component {
     );
   }
 }
+
+
+KegControl.propTypes = {
+  masterKegList: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
+};
+
+const mapStateToProps = state => {
+  return {
+    masterKegList: state.masterKegList,
+    formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+
+KegControl = connect(mapStateToProps)(KegControl);
+
+export default KegControl;
+
+
+
 
 
