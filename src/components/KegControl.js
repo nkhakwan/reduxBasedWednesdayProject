@@ -3,12 +3,16 @@ import NewKeg from './NewKeg'
 import KegList from './KegList'
 import Details from './Details'
 import * as a from './../actions';
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+//import { findAllByTestId } from '@testing-library/react';
+
 
 export default class KegControl extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //formVisibleOnPage: false,
+      formVisibleOnPage: false,
       //masterKegList: [],
       detail: false,
      // detailItem: []
@@ -19,17 +23,17 @@ export default class KegControl extends Component {
   
   
 
-  /*handleClick = () => {
+  handleClick = () => {
     this.setState(lastState => ({
       formVisibleOnPage: !lastState.formVisibleOnPage
     }));
-  }*/
+  }
 
-  handleClick = () => {
+  /*handleClick = () => {
   const { dispatch } = this.props;
   const action = a.actionFormTgl();
-  dispatch(action);
-}
+  dispatch(action);*/
+
   /*onNewKegCreation = (newKeg) => {
     const newMasterKegList = this.state.masterKegList.concat(newKeg);
     this.setState({
@@ -44,8 +48,11 @@ export default class KegControl extends Component {
     const {dispatch} =this.props;
     const action1 = a.actionAdd(newKeg);
     dispatch(action1);
-    const action2 = a.actionFormFalse();
-    dispatch(action2);
+    //const action2 = a.actionFormFalse();
+    //dispatch(action2);
+    this.setState({
+      formVisibleOnPage: false
+    });
   }
   
   
@@ -70,7 +77,7 @@ export default class KegControl extends Component {
 
   detail = (id) => {
     const {dispatch} =this.props;
-    action = a.actionDetail(id);
+    const action = a.actionDetail(this.props.masterKegList, id);
     dispatch(action);
     this.setState({ detail : true });
   }
@@ -88,14 +95,14 @@ export default class KegControl extends Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.detail){
-      console.log(`detailItem value is here ${this.state.detailItem}`);
-      currentlyVisibleState = <Details detailItem={this.state.detailItem[0]} back={this.back } />;
+      console.log(`detailItem value is here ${this.props.detailItem}`);
+      currentlyVisibleState = <Details detailItem={this.props.detailItem[0]} back={this.back } />;
       buttonText = "Not to be clicked"
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKeg onNewKegCreation={this.onNewKegCreation} />
       buttonText = "cancel"; 
     } else if (!this.state.formVisibleOnPage) {
-      currentlyVisibleState = <KegList kegList={this.state.masterKegList} buy={this.buy} detail={this.detail} />;
+      currentlyVisibleState = <KegList kegList={this.props.masterKegList} buy={this.buy} detail={this.detail} />;
       buttonText = "Add Kegs";
     }
   
@@ -108,6 +115,7 @@ export default class KegControl extends Component {
   }
 }
 
+
   
 
 KegControl.propTypes = {
@@ -117,15 +125,15 @@ KegControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterKegList: state.masterKegList,
-    formVisibleOnPage: state.formVisibleOnPage,
+    masterKegList: state.macroKegList,
+    //formVisibleOnPage: state.formVisibleOnPage,
     detailItem : state.detailItem
   }
 }
 
 KegControl = connect(mapStateToProps)(KegControl);
 
-export default KegControl;
+//export default KegControl;
 
 
 

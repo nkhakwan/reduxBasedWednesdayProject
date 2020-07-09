@@ -1,13 +1,16 @@
+import * as a from './addKeg';
 const { combineReducers } = require("redux");
-import firstReducer from './firstReducer';
-import secondReducer from './secondReducer';
 
-import {combineReducers} from 'redux';
+
+
+//import {combineReducers} from 'redux';
 
 
 const rootReducer = combineReducers({
 
-  firstReducer,
-  secondReducer
+  detailItem : a.detailItem,
+  macroKegList : a.macroKegList
 }
 )
+
+export default rootReducer;

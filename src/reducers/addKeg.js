@@ -1,30 +1,38 @@
-export default (state = {}, action) => {
+export const macroKegList =  (state = {}, action) => {
 
-  const { title, body, time, upvotes, id } = action;
+  const { name, brand, img, price, content, quantity, id } = action;
   switch (action.type) {
-    case 'ADD_POST':
+    case 'ADD_KEG':
       return Object.assign({}, state, {
         [id]: {
-          title: title,
-          body: body,
-          time: time,
-          upvotes: upvotes,
+          name : name,
+          brand : brand,
+          img : img,
+          price: price,  
+          content: content, 
+          quantity:quantity, 
           id: id
         }
       });
-    case 'DELETE_POST':
-      const newState = { ...state };
-      delete newState[id];
-      return newState;
-    case 'UPVOTE_POST':
-      const upvotedState = { ...state };
-      const upvotedPost = upvotedState[id];
-      console.log(upvotedPost);
-      upvotedState[id].upvotes = upvotedState[id].upvotes + 1;
-      //Or
-      //upvotedPost[upvotes] = parseInt(upvotedPost[upvotes]) + 1;
-      return upvotedState;
+    
+    case 'DEC_QTY':
+      const decreasedOneObject = { ...state };
+      decreasedOneObject[id].quantity =  decreasedOneObject[id].quantity - 1;
+      return decreasedOneObject;
     default:
       return state;
+  }
+}
+
+export const detailItem = (state = {}, action) => {
+  const { macroKegList, id } = action;
+  switch (action.type) {
+    case 'DETAIL':
+      //const detail = { ...macroKegList };
+      return macroKegList.forEach((obj)=> {
+        if (obj.id === id){
+          return obj;
+        }
+      });
   }
 }

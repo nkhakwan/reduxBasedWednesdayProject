@@ -8,9 +8,7 @@ import "../App.css";
 function App() {
   return (
     <>
-
       <KegControl />
-
     </>
 
   );

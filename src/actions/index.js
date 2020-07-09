@@ -16,9 +16,9 @@ export const actionAdd = (newKeg)=> {
     }
   }
 
-  export const actionFormFalse = () =>({
+  /*export const actionFormFalse = () =>({
     type: 'FORM_FALSE'
-  });
+  });*/
 
   export const actionDecQty = (id) => {
     return{
@@ -27,9 +27,11 @@ export const actionAdd = (newKeg)=> {
     }
   }
 
-  export const actionDetail = (id) => {
+  export const actionDetail = (macroKegList, id) => {
     return {
       type: 'DETAIL',
-      id : id
+      id : id,
+      macroKegList : macroKegList
+
     }
   }
