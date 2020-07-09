@@ -1,4 +1,5 @@
 import * as a from './addKeg';
+//import detailItem from './addKeg';
 const { combineReducers } = require("redux");
 
 
@@ -8,8 +9,8 @@ const { combineReducers } = require("redux");
 
 const rootReducer = combineReducers({
 
-  detailItem : a.detailItem,
-  macroKegList : a.macroKegList
+  macroKegList : a.macroKegList,
+  detailItem : a.detailItem
 }
 )
 

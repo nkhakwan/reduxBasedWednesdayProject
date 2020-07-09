@@ -6,7 +6,7 @@ export default function KegList(props) {
     <>
       <h1>Drinks! Brands, Prices and Alcohol Contents </h1>
       <div className="keg-container">
-        {kegList.length > 0 ? kegList.map(keg => (
+        {Object.keys(kegList).length > 0 ? Object.values(kegList).map(keg => (
           <div className="keg-box" key={keg.id}>
             <img src={keg.img} alt={keg.desc} />
             <div>

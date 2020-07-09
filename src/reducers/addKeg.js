@@ -1,5 +1,5 @@
 export const macroKegList =  (state = {}, action) => {
-
+  
   const { name, brand, img, price, content, quantity, id } = action;
   switch (action.type) {
     case 'ADD_KEG':
@@ -14,7 +14,6 @@ export const macroKegList =  (state = {}, action) => {
           id: id
         }
       });
-    
     case 'DEC_QTY':
       const decreasedOneObject = { ...state };
       decreasedOneObject[id].quantity =  decreasedOneObject[id].quantity - 1;
@@ -26,13 +25,15 @@ export const macroKegList =  (state = {}, action) => {
 
 export const detailItem = (state = {}, action) => {
   const { macroKegList, id } = action;
+  console.log (action.type);
   switch (action.type) {
     case 'DETAIL':
-      //const detail = { ...macroKegList };
-      return macroKegList.forEach((obj)=> {
-        if (obj.id === id){
-          return obj;
-        }
-      });
+    if (macroKegList[id] != null){
+      return macroKegList[id];
+    } else{
+      return state;
+    }
+    default:
+      return state 
   }
 }

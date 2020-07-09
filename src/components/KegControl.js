@@ -77,6 +77,7 @@ export default class KegControl extends Component {
 
   detail = (id) => {
     const {dispatch} =this.props;
+    console.log(this.props.masterKegList);
     const action = a.actionDetail(this.props.masterKegList, id);
     dispatch(action);
     this.setState({ detail : true });
@@ -95,8 +96,7 @@ export default class KegControl extends Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.detail){
-      console.log(`detailItem value is here ${this.props.detailItem}`);
-      currentlyVisibleState = <Details detailItem={this.props.detailItem[0]} back={this.back } />;
+      currentlyVisibleState = <Details detailItem={this.props.detailItem} back={this.back } />;
       buttonText = "Not to be clicked"
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKeg onNewKegCreation={this.onNewKegCreation} />
